@@ -1,14 +1,14 @@
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.TextField;
+package GUI;
+
+import java.awt.Frame;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI {
 
   public static void main(String[] args) {
-    Frame frame = new Frame("Cows and Bulls");
+    java.awt.Frame frame = new Frame("Cows and Bulls");
 
     Label titleLabel = new Label("Welcome to Cows and Bulls", new Color(0x344e41), new Font("MV Boli", Font.PLAIN, 30));
     titleLabel.setBounds(0, 0, 480, 100);
@@ -29,6 +29,7 @@ public class GUI {
       public void actionPerformed(ActionEvent e) {
         String enteredName = nameInput.getText();
         System.out.println(enteredName);
+        // Player playerObj = new Player(enteredName);
         // Perform any action you want with the entered name
       }
     });

@@ -1,7 +1,7 @@
-import java.awt.Color;
-import java.awt.Font;
+package GUI;
 
-import javax.swing.JLabel;
+import javax.swing.*;
+import java.awt.*;
 
 public class Label extends JLabel {
   Label(String text, Color color, Font font) {
