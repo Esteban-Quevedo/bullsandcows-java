@@ -1,10 +1,7 @@
 /**
- * Application purpose:
- * Author: Camilo, Esteban, Vishal
+ * Application purpose: Player Class with its respective Constructors, Setters, Getters, and Methods.
  * Date: November 8th of 2023
  */
-
-// Importing the required libraries
 
 // Player class definition.
 public class Player {

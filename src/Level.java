@@ -1,11 +1,9 @@
 /**
- * Application purpose:
- * Author: Camilo, Esteban, Vishal
+ * Application purpose: Game Level with its respective Constructors, Setters, Getters, and Methods.
  * Date: November 8th of 2023
  */
 
 // Importing the required libraries
-
 import java.util.Random;
 
 // Level class definition.
@@ -65,17 +63,15 @@ public class Level {
 
     // generateRandomCombination method definition
     private int[] generateRandomCombination() {
-
+        // Check a valid Level Number
         if (levelNumber < 1 || levelNumber > 5) {
             throw new ArithmeticException("The level number is not valid (the number must be from 0 to 5).");
         }
-
         // Creates an empty array
         int[] combinationArray = new int[levelNumber + 1];
-
         // Creates a new random object
         Random random = new Random();
-
+        // Fills out the combination Array
         for (int i = 0; i < combinationArray.length; i++) {
             int randomNumber;
             do {
