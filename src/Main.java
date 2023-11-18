@@ -2,15 +2,14 @@
  * Application purpose: This app is a Java-based game that implements the classic Bulls and Cows guessing game.
  * The game is played through the terminal, providing an interactive experience for the user.
  * This main class:
- * - Create player
+ * - Creates a player
+ * - Creates a Level
  * - Initialize game instance
  * - Run Game
- * Author: Camilo, Esteban, Vishal
  * Date: November 8th of 2023
  */
 
 // Importing the required libraries
-
 import java.util.Scanner;
 
 public class Main {
@@ -29,7 +28,6 @@ public class Main {
         // Create a player
         Player playerObj = new Player(user_name);
 
-
         // declaring the game mode var
         int gameMode;
         // Reading Game Mode
@@ -39,7 +37,6 @@ public class Main {
             System.out.println("2. Campaign Mode (Starts at Level 1 and progresses through the levels).");
             gameMode = scan.nextInt();
         } while (gameMode < 1 || gameMode > 2);
-
 
         // declaring the level num var
         int levelNum;
@@ -90,8 +87,8 @@ public class Main {
             // Game loop while the user has lives and the level is not done
             do {
                 // initialize both Bulls and Cows variables
-                int bullsNum = 0;
-                int cowsNum = 0;
+                int bullsNum;
+                int cowsNum;
 
                 // Create a new array to save the user guess
                 int[] userGuessCode = new int[levelObj.getLevel() + 1];
@@ -156,15 +153,17 @@ public class Main {
                 }
                 else {
                     System.out.print("\n\n\n***************************************************************");
-                    System.out.printf("\n****** Well done %s , Game Complete !!! ******", playerObj.getName());
-                    System.out.printf("\n*** Mode:%s   Difficulty:%s  ***", gameObj.getGameModeName(), gameObj.getGameDifficultyName());
-                    System.out.printf("\n*** Rem lives:%s  Final Score:%s  ***", gameObj.getLivesNum(), playerObj.getScore());
+                    System.out.print("\n************************ GAME COMPLETE *************************");
+                    System.out.printf("\n**** Player Name: %s  ****", playerObj.getName());
+                    System.out.printf("\n**** Mode: %s   Difficulty: %s  ****", gameObj.getGameModeName(), gameObj.getGameDifficultyName());
+                    System.out.printf("\n**** Rem lives: %s  Final Score: %s  ****", gameObj.getLivesNum(), playerObj.getScore());
                     System.out.println("\n***************************************************************");
                     gameOver = true;
                 }
 
             }
         } while (!gameOver);
+
         // Closing The scanner
         scan.close();
 
