@@ -18,7 +18,6 @@ public class BullsCows extends JFrame{
     private JButton gameModeBtn;
     private JPanel gameModeBtnPanel;
 
-
     public BullsCows() {
 
         this.gameModePanel.setVisible(false);
@@ -46,6 +45,7 @@ public class BullsCows extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 // Check which radio button is selected
                 if (freeModeBtn.isSelected()) {
+                    // Game game = new Game(1, );
                     gameModePanel.setVisible(false);
                     selectLevelPanel.setVisible(true);
                     gameModeBtnPanel.setVisible(false);
