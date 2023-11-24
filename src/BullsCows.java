@@ -17,19 +17,35 @@ public class BullsCows extends JFrame{
     private JPanel selectLevelPanel;
     private JButton gameModeBtn;
     private JPanel gameModeBtnPanel;
+    private JRadioButton normalDifficultyBtn;
+    private JRadioButton amateurDifficultyBtn;
+    private JRadioButton expertDificultyBtn;
+    private JPanel gameDifficultyPanel;
+    private JButton gameDifficultyBtn;
+    private JPanel gameDifficultyBtnPanel;
+
+
+    private String playerName = "";
+    private int gameMode = 1;
+    private int gameDifficulty = 1;
+    private String selectedLevel = "1";
+    private int levelInteger = 1;
+
+    private boolean isGameOver = false;
 
     public BullsCows() {
 
+        this.gameDifficultyPanel.setVisible(false);
+        this.gameDifficultyBtnPanel.setVisible(false);
         this.gameModePanel.setVisible(false);
-        this.selectLevelPanel.setVisible(false);
         this.gameModeBtnPanel.setVisible(false);
+        this.selectLevelPanel.setVisible(false);
 
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String enteredName = nameTxtField.getText();
-                System.out.println("Entered name: " +enteredName);
-                Player playerObj = new Player(enteredName);
+                playerName = nameTxtField.getText();
+                System.out.println("Entered name: " + playerName);
 
                 namePanel.setVisible(false);
                 submitPanel.setVisible(false);
@@ -43,21 +59,24 @@ public class BullsCows extends JFrame{
         gameModeBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                gameModePanel.setVisible(false);
+                gameModeBtnPanel.setVisible(false);
+
                 // Check which radio button is selected
                 if (freeModeBtn.isSelected()) {
                     // Game game = new Game(1, );
-                    gameModePanel.setVisible(false);
+                    gameMode = 1;
+
                     selectLevelPanel.setVisible(true);
-                    gameModeBtnPanel.setVisible(false);
 
                     titleLabel.setText("Select a Level");
-
                 } else if (campaignModeBtn.isSelected()) {
-                    gameModePanel.setVisible(false);
-                    selectLevelPanel.setVisible(false);
-                    gameModeBtnPanel.setVisible(false);
+                    gameMode = 2;
 
-                    titleLabel.setText("Bulls & Cows | Level 1");
+                    gameDifficultyPanel.setVisible(true);
+                    gameDifficultyBtnPanel.setVisible(true);
+
+                    titleLabel.setText("Select Game Difficulty");
                 }
             }
         });
@@ -65,18 +84,55 @@ public class BullsCows extends JFrame{
         selectLevelCombo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedLevel = (String) selectLevelCombo.getSelectedItem();
+                selectedLevel = (String) selectLevelCombo.getSelectedItem();
                 System.out.println("Selected: " + selectedLevel);
 
                 selectLevelPanel.setVisible(false);
 
-                titleLabel.setText("Bulls & Cows | Level " + selectedLevel);
+                titleLabel.setText("Select Game Difficulty");
+
+                gameDifficultyPanel.setVisible(true);
+                gameDifficultyBtnPanel.setVisible(true);
             }
         });
-    }
+        gameDifficultyBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameDifficultyPanel.setVisible(false);
+                gameDifficultyBtnPanel.setVisible(false);
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+                titleLabel.setText("Bulls & Cows | Level " + selectedLevel);
+
+                // Check which radio button is selected
+                if (amateurDifficultyBtn.isSelected()) {
+                    // Game game = new Game(1, );
+                    gameDifficulty = 1;
+                } else if (normalDifficultyBtn.isSelected()) {
+                    gameDifficulty = 2;
+
+                } else if (expertDificultyBtn.isSelected()) {
+                    gameDifficulty = 3;
+
+                }
+            }
+        });
+
+        // Filling player data
+        Player playerObj = new Player(playerName);
+        playerObj.setLevel(levelInteger);
+
+        // Create a level
+        Level levelObj = new Level();
+        levelInteger = Integer.parseInt(selectedLevel);
+        levelObj.setLevel(levelInteger);
+
+        // Create a Game
+        Game gameObj = new Game(gameMode, gameDifficulty, levelObj);
+
+        // Get the code number
+        int[] gameCode = levelObj.getTargetCombination();
+
+        System.out.println(gameCode);
     }
 
     public static void main(String[] args){

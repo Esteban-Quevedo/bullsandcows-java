@@ -7,16 +7,40 @@
 // Importing the required libraries
 
 public class Player {
+    // Variables Definition
     private String name;
-    Player (String name) {
-        this.name = name;
+    private int level;
+    private int score;
+
+    // Default constructor
+    Player(){
+        this.name = "";
+        this.level = 0;
+        this.score = 0;
     }
 
-    public String getName() {
-        return name;
+    // Constructor that takes 4 (four) arguments.
+    Player( String name){
+        this.name = name;
+        this.level = 0;
+        this.score = 0;
     }
 
-    public void setName(String name) {
+    // Constructor that takes 4 (four) arguments.
+    Player( String name, int level, int score){
         this.name = name;
+        this.level = level;
+        this.score = score;
     }
+
+    // Getters Definition.
+    public String getName() {return name;}
+    public int getLevel() {return level;}
+    public int getScore() {return score;}
+
+
+    // Setters Definition.
+    public void setName (String name) {this.name = name;}
+    public void setLevel(int level) {this.level = level;}
+    public void setScore(int score) {this.score = score;}
 }
