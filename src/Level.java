@@ -62,7 +62,7 @@ public class Level {
     }
 
     // generateRandomCombination method definition
-    private int[] generateRandomCombination() {
+    protected int[] generateRandomCombination() {
         // Check a valid Level Number
         if (levelNumber < 1 || levelNumber > 5) {
             throw new ArithmeticException("The level number is not valid (the number must be from 0 to 5).");

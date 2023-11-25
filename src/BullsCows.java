@@ -31,6 +31,10 @@ public class BullsCows extends JFrame{
     private String selectedLevel = "1";
     private int levelInteger = 1;
 
+    private int[] gameCode;
+
+    private boolean levelPassed = false;
+
     private boolean isGameOver = false;
 
     public BullsCows() {
@@ -41,10 +45,14 @@ public class BullsCows extends JFrame{
         this.gameModeBtnPanel.setVisible(false);
         this.selectLevelPanel.setVisible(false);
 
+        Player playerObj = new Player(playerName);
+        Level levelObj = new Level();
+
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 playerName = nameTxtField.getText();
+                playerObj.setName(playerName);
                 System.out.println("Entered name: " + playerName);
 
                 namePanel.setVisible(false);
@@ -85,7 +93,14 @@ public class BullsCows extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedLevel = (String) selectLevelCombo.getSelectedItem();
-                System.out.println("Selected: " + selectedLevel);
+
+                levelInteger = Integer.parseInt(selectedLevel);
+                levelObj.setLevel(levelInteger);
+                levelObj.setTargetCombination(levelObj.generateRandomCombination());
+
+                playerObj.setLevel(levelInteger);
+
+                System.out.println("Selected Level: " + selectedLevel);
 
                 selectLevelPanel.setVisible(false);
 
@@ -101,11 +116,8 @@ public class BullsCows extends JFrame{
                 gameDifficultyPanel.setVisible(false);
                 gameDifficultyBtnPanel.setVisible(false);
 
-                titleLabel.setText("Bulls & Cows | Level " + selectedLevel);
-
                 // Check which radio button is selected
                 if (amateurDifficultyBtn.isSelected()) {
-                    // Game game = new Game(1, );
                     gameDifficulty = 1;
                 } else if (normalDifficultyBtn.isSelected()) {
                     gameDifficulty = 2;
@@ -114,25 +126,28 @@ public class BullsCows extends JFrame{
                     gameDifficulty = 3;
 
                 }
+                Game gameObj = new Game(gameMode, gameDifficulty, levelObj);
+                gameCode = levelObj.getTargetCombination();
+                System.out.println("Game difficulty: " + gameDifficulty);
+
+                titleLabel.setText("Bulls & Cows | Level " + selectedLevel);
             }
         });
 
         // Filling player data
-        Player playerObj = new Player(playerName);
-        playerObj.setLevel(levelInteger);
+        //Player playerObj = new Player(playerName);
+        //layerObj.setLevel(levelInteger);
 
         // Create a level
-        Level levelObj = new Level();
-        levelInteger = Integer.parseInt(selectedLevel);
-        levelObj.setLevel(levelInteger);
+        //Level levelObj = new Level();
+        //levelInteger = Integer.parseInt(selectedLevel);
+        //levelObj.setLevel(levelInteger);
 
         // Create a Game
-        Game gameObj = new Game(gameMode, gameDifficulty, levelObj);
+        //Game gameObj = new Game(gameMode, gameDifficulty, levelObj);
 
         // Get the code number
-        int[] gameCode = levelObj.getTargetCombination();
-
-        System.out.println(gameCode);
+        //int[] gameCode = levelObj.getTargetCombination();
     }
 
     public static void main(String[] args){
