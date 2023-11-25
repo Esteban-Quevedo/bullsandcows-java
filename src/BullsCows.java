@@ -19,7 +19,7 @@ public class BullsCows extends JFrame{
     private JPanel gameModeBtnPanel;
     private JRadioButton normalDifficultyBtn;
     private JRadioButton amateurDifficultyBtn;
-    private JRadioButton expertDificultyBtn;
+    private JRadioButton expertDifficultyBtn;
     private JPanel gameDifficultyPanel;
     private JButton gameDifficultyBtn;
     private JPanel gameDifficultyBtnPanel;
@@ -122,7 +122,7 @@ public class BullsCows extends JFrame{
                 } else if (normalDifficultyBtn.isSelected()) {
                     gameDifficulty = 2;
 
-                } else if (expertDificultyBtn.isSelected()) {
+                } else if (expertDifficultyBtn.isSelected()) {
                     gameDifficulty = 3;
 
                 }
