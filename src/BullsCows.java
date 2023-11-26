@@ -12,9 +12,9 @@ public class BullsCows extends JFrame{
     private JPanel namePanel;
     private JPanel gameModePanel;
     private JPanel gameModeBtnPanel;
-    //private JRadioButton campaignModeBtn;
-    //private JRadioButton freeModeBtn;
-    //private JButton gameModeBtn;
+    private JRadioButton campaignModeBtn;
+    private JRadioButton freeModeBtn;
+    private JButton gameModeBtn;
     private JComboBox selectLevelCombo;
     private JPanel selectLevelPanel;
     private JRadioButton normalDifficultyBtn;
