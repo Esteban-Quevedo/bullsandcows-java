@@ -47,13 +47,13 @@ public class Game {
     }
 
     // Variables Definition
-    private final int gameMode; // Game Mode  1.Free Mode, and 2.Campaign Mode
+    private  int gameMode; // Game Mode  1.Free Mode, and 2.Campaign Mode
     private final String gameModeName; // String that contain the game Mode Name
-    private final int gameDifficulty; // Game Mode 1.Amateur, 2.Normal, and 3.Expert
+    private int gameDifficulty; // Game Mode 1.Amateur, 2.Normal, and 3.Expert
     private final String gameDifficultyName; // String that contain the game Difficulty Name
-    private final Level levelObj; // Save the level object
+    private Level levelObj; // Save the level object
     private int livesNum; // Save the number of lives
-    private final int maxTriesNum; // Save the Max number of tries
+    private int maxTriesNum; // Save the Max number of tries
     private int totalAttempts; // Save the total number of attempts
     private int totalScore; // Save the total Score of the game
 
@@ -131,6 +131,26 @@ public class Game {
 
     public void setTotalScore(int totalScore) {
         this.totalScore = totalScore;
+    }
+
+    public void setGameMode(int gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    public void setGameDifficulty(int gameDifficulty) {
+        this.gameDifficulty = gameDifficulty;
+    }
+
+    public void setLevelObj(Level levelObj){
+        this.levelObj = levelObj;
+    }
+
+    public void setMaxTriesNum(){
+        this.maxTriesNum = calcMaxTries();
+    }
+
+    public void setTotalScore(){
+        this.totalScore = calcTotalScore();
     }
 
 
