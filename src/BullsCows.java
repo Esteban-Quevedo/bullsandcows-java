@@ -35,7 +35,7 @@ public class BullsCows extends JFrame{
 
     // States
     private String playerName = "";
-    private int gameMode = 1;
+    private final int gameMode = 1;
     private int gameDifficulty = 1;
     private int levelInteger = 1;
     private int lives = 0;
@@ -53,7 +53,7 @@ public class BullsCows extends JFrame{
         this.dataPanel.setVisible(false);
         this.submitDataPanel.setVisible(false);
 
-        Player playerObj = new Player(playerName);
+        Player playerObj = new Player();
         Level levelObj = new Level();
         Game gameObj = new Game();
 
