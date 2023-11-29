@@ -10,11 +10,6 @@ public class BullsCows extends JFrame{
     private JTextField nameTxtField;
     private JLabel nameLabel;
     private JPanel namePanel;
-    private JPanel gameModePanel;
-    private JPanel gameModeBtnPanel;
-    //private JRadioButton campaignModeBtn;
-    //private JRadioButton freeModeBtn;
-    //private JButton gameModeBtn;
     private JComboBox selectLevelCombo;
     private JPanel selectLevelPanel;
     private JRadioButton normalDifficultyBtn;
@@ -38,23 +33,20 @@ public class BullsCows extends JFrame{
     private JPanel submitDataPanel;
     private JButton submitDataBtn;
 
-
+    // States
     private String playerName = "";
     private int gameMode = 1;
     private int gameDifficulty = 1;
-    private String selectedLevel = "1";
     private int levelInteger = 1;
-    private int[] gameCode;
     private int lives = 0;
     private int bullsNum = 0;
     private int cowsNum = 0;
+    private int[] gameCode;
 
     public BullsCows() {
 
         this.gameDifficultyPanel.setVisible(false);
         this.gameDifficultyBtnPanel.setVisible(false);
-        this.gameModePanel.setVisible(false);
-        this.gameModeBtnPanel.setVisible(false);
         this.selectLevelPanel.setVisible(false);
         this.livesPanel.setVisible(false);
         this.bullsAndCowsPanel.setVisible(false);
@@ -68,58 +60,29 @@ public class BullsCows extends JFrame{
         submitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Logic
+                // LOGIC
+                // Get player name from text field
                 playerName = nameTxtField.getText();
                 playerObj.setName(playerName);
-
-                System.out.println("Entered name: " + playerName);
 
                 // UI
                 namePanel.setVisible(false);
                 submitPanel.setVisible(false);
-                //gameModePanel.setVisible(true);
-                //gameModeBtnPanel.setVisible(true);
                 selectLevelPanel.setVisible(true);
 
-                //titleLabel.setText("Select a Game Mode");
                 titleLabel.setText("Select a Level");
+
+                // Printing in console
+                System.out.println("Entered name: " + playerName);
             }
         });
-
-        //gameModeBtn.addActionListener(new ActionListener() {
-            //@Override
-            //public void actionPerformed(ActionEvent e) {
-                //gameModePanel.setVisible(false);
-                //gameModeBtnPanel.setVisible(false);
-
-                //selectLevelPanel.setVisible(true);
-
-                //titleLabel.setText("Select a Level");
-
-                // Check which radio button is selected
-                //if (freeModeBtn.isSelected()) {
-                //    // Game game = new Game(1, );
-                //    gameMode = 1;
-
-                //    selectLevelPanel.setVisible(true);
-
-                //    titleLabel.setText("Select a Level");
-                //} else if (campaignModeBtn.isSelected()) {
-                //    gameMode = 2;
-
-                //    gameDifficultyPanel.setVisible(true);
-                //    gameDifficultyBtnPanel.setVisible(true);
-
-                //    titleLabel.setText("Select Game Difficulty");
-                //}
-            //}
-        //});
 
         selectLevelCombo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Logic
-                selectedLevel = (String) selectLevelCombo.getSelectedItem();
+                // LOGIC
+                // Check which level is selected
+                String selectedLevel = (String) selectLevelCombo.getSelectedItem();
 
                 levelInteger = Integer.parseInt(selectedLevel);
                 levelObj.setLevel(levelInteger);
@@ -127,7 +90,6 @@ public class BullsCows extends JFrame{
 
                 playerObj.setLevel(levelInteger);
 
-                System.out.println("Selected Level: " + selectedLevel);
 
                 // UI
                 selectLevelPanel.setVisible(false);
@@ -136,12 +98,15 @@ public class BullsCows extends JFrame{
 
                 gameDifficultyPanel.setVisible(true);
                 gameDifficultyBtnPanel.setVisible(true);
+
+                // Printing in console
+                System.out.println("Selected Level: " + levelInteger);
             }
         });
         gameDifficultyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Logic
+                // LOGIC
                 // Check which radio button is selected
                 if (amateurDifficultyBtn.isSelected()) {
                     gameDifficulty = 1;
@@ -152,7 +117,7 @@ public class BullsCows extends JFrame{
                     gameDifficulty = 3;
                 }
 
-                //Game gameObj = new Game(gameMode, gameDifficulty, levelObj);
+                // Updating Game settings
                 gameObj.setGameMode(gameMode);
                 gameObj.setGameDifficulty(gameDifficulty);
                 gameObj.setLevelObj(levelObj);
@@ -160,17 +125,18 @@ public class BullsCows extends JFrame{
                 gameObj.setTotalScore();
                 gameObj.setLivesNum(3);
 
+                // Get game code
                 gameCode = levelObj.getTargetCombination();
 
+                // Get number of lives
                 lives = gameObj.getLivesNum();
 
-                System.out.println("Game difficulty: " + gameDifficulty);
 
                 // UI
                 gameDifficultyPanel.setVisible(false);
                 gameDifficultyBtnPanel.setVisible(false);
 
-                titleLabel.setText("Bulls & Cows | Level " + selectedLevel);
+                titleLabel.setText("Bulls & Cows | Level " + levelInteger);
 
                 livesPanel.setVisible(true);
                 livesLabel.setText("Lives: " + lives);
@@ -181,20 +147,20 @@ public class BullsCows extends JFrame{
 
                 dataPanel.setVisible(true);
 
-                switch (selectedLevel) {
-                    case "2":
+                switch (levelInteger) {
+                    case 2:
                         dataComboBox4.setVisible(false);
                         dataComboBox5.setVisible(false);
                         dataComboBox6.setVisible(false);
                         break;
-                    case "3":
+                    case 3:
                         dataComboBox5.setVisible(false);
                         dataComboBox6.setVisible(false);
                         break;
-                    case "4":
+                    case 4:
                         dataComboBox6.setVisible(false);
                         break;
-                    case "5":
+                    case 5:
                         break;
                     default:
                         dataComboBox3.setVisible(false);
@@ -205,13 +171,16 @@ public class BullsCows extends JFrame{
                 }
 
                 submitDataPanel.setVisible(true);
+
+                // Printing in console
+                System.out.println("Game difficulty: " + gameDifficulty);
             }
         });
 
         submitDataBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Logic
+                // LOGIC
                 String dataCombo1;
                 String dataCombo2;
                 String dataCombo3;
@@ -223,41 +192,40 @@ public class BullsCows extends JFrame{
                 int[] userGuessCode = new int[levelObj.getLevel() + 1];
                 int userGuessCodeLength = userGuessCode.length;
 
-                switch (selectedLevel) {
-                    case "2":
+                // Get user input data from selected level
+                switch (levelInteger) {
+                    case 2:
                         dataCombo1 = (String) dataComboBox1.getSelectedItem();
                         dataCombo2 = (String) dataComboBox2.getSelectedItem();
                         dataCombo3 = (String) dataComboBox3.getSelectedItem();
-
-                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3);
 
                         userGuessCode[0] = Integer.parseInt(dataCombo1);
                         userGuessCode[1] = Integer.parseInt(dataCombo2);
                         userGuessCode[2] = Integer.parseInt(dataCombo3);
 
+                        // Printing in console
+                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3);
                         break;
-                    case "3":
+                    case 3:
                         dataCombo1 = (String) dataComboBox1.getSelectedItem();
                         dataCombo2 = (String) dataComboBox2.getSelectedItem();
                         dataCombo3 = (String) dataComboBox3.getSelectedItem();
                         dataCombo4 = (String) dataComboBox4.getSelectedItem();
-
-                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3 + dataCombo4);
 
                         userGuessCode[0] = Integer.parseInt(dataCombo1);
                         userGuessCode[1] = Integer.parseInt(dataCombo2);
                         userGuessCode[2] = Integer.parseInt(dataCombo3);
                         userGuessCode[3] = Integer.parseInt(dataCombo4);
 
+                        // Printing in console
+                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3 + dataCombo4);
                         break;
-                    case "4":
+                    case 4:
                         dataCombo1 = (String) dataComboBox1.getSelectedItem();
                         dataCombo2 = (String) dataComboBox2.getSelectedItem();
                         dataCombo3 = (String) dataComboBox3.getSelectedItem();
                         dataCombo4 = (String) dataComboBox4.getSelectedItem();
                         dataCombo5 = (String) dataComboBox5.getSelectedItem();
-
-                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3 + dataCombo4 + dataCombo5);
 
                         userGuessCode[0] = Integer.parseInt(dataCombo1);
                         userGuessCode[1] = Integer.parseInt(dataCombo2);
@@ -265,16 +233,16 @@ public class BullsCows extends JFrame{
                         userGuessCode[3] = Integer.parseInt(dataCombo4);
                         userGuessCode[4] = Integer.parseInt(dataCombo5);
 
+                        // Printing in console
+                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3 + dataCombo4 + dataCombo5);
                         break;
-                    case "5":
+                    case 5:
                         dataCombo1 = (String) dataComboBox1.getSelectedItem();
                         dataCombo2 = (String) dataComboBox2.getSelectedItem();
                         dataCombo3 = (String) dataComboBox3.getSelectedItem();
                         dataCombo4 = (String) dataComboBox4.getSelectedItem();
                         dataCombo5 = (String) dataComboBox5.getSelectedItem();
                         dataCombo6 = (String) dataComboBox6.getSelectedItem();
-
-                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3 + dataCombo4 + dataCombo5 + dataCombo6);
 
                         userGuessCode[0] = Integer.parseInt(dataCombo1);
                         userGuessCode[1] = Integer.parseInt(dataCombo2);
@@ -283,16 +251,18 @@ public class BullsCows extends JFrame{
                         userGuessCode[4] = Integer.parseInt(dataCombo5);
                         userGuessCode[5] = Integer.parseInt(dataCombo6);
 
+                        // Printing in console
+                        System.out.println("Selected data: " + dataCombo1 + dataCombo2 + dataCombo3 + dataCombo4 + dataCombo5 + dataCombo6);
                         break;
                     default:
                         dataCombo1 = (String) dataComboBox1.getSelectedItem();
                         dataCombo2 = (String) dataComboBox2.getSelectedItem();
 
-                        System.out.println("Selected data: " + dataCombo1 + dataCombo2);
-
                         userGuessCode[0] = Integer.parseInt(dataCombo1);
                         userGuessCode[1] = Integer.parseInt(dataCombo2);
 
+                        // Printing in console
+                        System.out.println("Selected data: " + dataCombo1 + dataCombo2);
                         break;
                 }
 
@@ -301,6 +271,7 @@ public class BullsCows extends JFrame{
                 bullsNum = tempBullsAndCows[0];
                 cowsNum = tempBullsAndCows[1];
 
+
                 // UI
                 // Check if the user have the correct code
                 if (bullsNum == userGuessCodeLength) {
@@ -308,24 +279,33 @@ public class BullsCows extends JFrame{
                     bullsAndCowsPanel.setVisible(false);
                     submitDataPanel.setVisible(false);
 
+                    // Display winning message
                     String winnerText = playerObj.getName().toUpperCase() + " WON! Score: ";
                     titleLabel.setText(winnerText + gameObj.getTotalScore());
                 }
+                // If user guess was not correct
                 else {
+                    // Set new value of lives remaining
                     lives =  gameObj.getLivesNum();
 
+                    // Update the UI fields
                     livesLabel.setText("Lives: " + lives);
                     bullsLabel.setText("Bulls: " + bullsNum);
                     cowsLabel.setText("Cows: " + cowsNum);
 
+                    // Calculate new Score
                     gameObj.reCalcScore();
+
+                    // Check if user has enough lives to continue
                     boolean isAlive = gameObj.checkStillAlive();
 
+                    // If user does not have more tries, end the game
                     if (!isAlive) {
                         livesPanel.setVisible(false);
                         bullsAndCowsPanel.setVisible(false);
                         submitDataPanel.setVisible(false);
 
+                        // Display game over message
                         String looserText = playerObj.getName().toUpperCase() + " LOST! Good luck next time";
                         titleLabel.setText(looserText);
                     }
