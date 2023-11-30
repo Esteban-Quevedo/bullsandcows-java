@@ -47,7 +47,6 @@ public class BullsCows extends JFrame{
     private int bullsNum = 0;
     private int cowsNum = 0;
     private int[] gameCode;
-    //private int[] userGuessCode;
 
 
     public BullsCows() {
