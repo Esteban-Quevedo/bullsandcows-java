@@ -390,7 +390,7 @@
             <properties>
               <autoCreateRowSorter value="false"/>
               <background color="-12505283"/>
-              <enabled value="true"/>
+              <enabled value="false"/>
               <fillsViewportHeight value="true"/>
               <font name="Segoe UI" size="10" style="0"/>
               <foreground color="-65798"/>
