@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,6 +33,10 @@ public class BullsCows extends JFrame{
     private JComboBox dataComboBox6;
     private JPanel submitDataPanel;
     private JButton submitDataBtn;
+    private JPanel historyPanel;
+    private JLabel historyTitleLabel;
+    private JPanel historyTitlePanel;
+    private JTable historyTable;
 
     // States
     private String playerName = "";
@@ -42,6 +47,8 @@ public class BullsCows extends JFrame{
     private int bullsNum = 0;
     private int cowsNum = 0;
     private int[] gameCode;
+    //private int[] userGuessCode;
+
 
     public BullsCows() {
 
@@ -52,6 +59,8 @@ public class BullsCows extends JFrame{
         this.bullsAndCowsPanel.setVisible(false);
         this.dataPanel.setVisible(false);
         this.submitDataPanel.setVisible(false);
+        this.historyTitlePanel.setVisible(false);
+        this.historyPanel.setVisible(false);
 
         Player playerObj = new Player();
         Level levelObj = new Level();
@@ -177,6 +186,10 @@ public class BullsCows extends JFrame{
             }
         });
 
+        DefaultTableModel model = new DefaultTableModel();
+        historyTable.setModel(model);
+        model.setColumnIdentifiers(new Object[]{"Guess", "Bulls", "Cows"});
+
         submitDataBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -278,6 +291,8 @@ public class BullsCows extends JFrame{
                     livesPanel.setVisible(false);
                     bullsAndCowsPanel.setVisible(false);
                     submitDataPanel.setVisible(false);
+                    historyTitlePanel.setVisible(false);
+                    historyPanel.setVisible(false);
 
                     // Display winning message
                     String winnerText = playerObj.getName().toUpperCase() + " WON! Score: ";
@@ -285,6 +300,22 @@ public class BullsCows extends JFrame{
                 }
                 // If user guess was not correct
                 else {
+                    // Display history
+                    historyTitlePanel.setVisible(true);
+                    historyPanel.setVisible(true);
+
+                    String guess = "";
+
+                    for (int i = 0; i < userGuessCodeLength; i++) {
+                        guess = guess.concat(Integer.toString(userGuessCode[i]));
+                    }
+
+                    model.addRow(new Object[]{
+                            guess,
+                            bullsNum,
+                            cowsNum
+                    });
+
                     // Set new value of lives remaining
                     lives =  gameObj.getLivesNum();
 
@@ -304,6 +335,8 @@ public class BullsCows extends JFrame{
                         livesPanel.setVisible(false);
                         bullsAndCowsPanel.setVisible(false);
                         submitDataPanel.setVisible(false);
+                        historyTitlePanel.setVisible(false);
+                        historyPanel.setVisible(false);
 
                         // Display game over message
                         String looserText = playerObj.getName().toUpperCase() + " LOST! Good luck next time";

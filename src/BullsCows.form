@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="BullsCows">
-  <grid id="27dc6" binding="globalPanel" layout-manager="GridLayoutManager" row-count="6" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="globalPanel" layout-manager="GridLayoutManager" row-count="6" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1005" height="575"/>
+      <xy x="20" y="20" width="1109" height="575"/>
     </constraints>
     <properties>
       <background color="-12505283"/>
@@ -13,7 +13,7 @@
     <children>
       <component id="c77bb" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="0" column="0" row-span="1" col-span="11" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="10"/>
           </grid>
         </constraints>
@@ -53,7 +53,7 @@
       <grid id="91bb7" binding="selectLevelPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="4" column="5" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="5" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-12505283"/>
@@ -79,7 +79,7 @@
       <grid id="56ca8" binding="namePanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="3" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="3" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-12505283"/>
@@ -111,7 +111,7 @@
       <grid id="53373" binding="gameDifficultyBtnPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="5" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="6" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-12505283"/>
@@ -135,24 +135,13 @@
       <grid id="2a432" binding="gameDifficultyPanel" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-12505283"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="16ca7" class="javax.swing.JRadioButton" binding="amateurDifficultyBtn">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-12505283"/>
-              <font name="Segoe UI" size="14" style="0"/>
-              <foreground color="-65798"/>
-              <text value="Amateur"/>
-            </properties>
-          </component>
           <component id="d1901" class="javax.swing.JRadioButton" binding="expertDifficultyBtn">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -173,6 +162,17 @@
               <font name="Segoe UI" size="14" style="0"/>
               <foreground color="-65798"/>
               <text value="Normal"/>
+            </properties>
+          </component>
+          <component id="16ca7" class="javax.swing.JRadioButton" binding="amateurDifficultyBtn">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-12505283"/>
+              <font name="Segoe UI" size="14" style="0"/>
+              <foreground color="-65798"/>
+              <text value="Amateur"/>
             </properties>
           </component>
         </children>
@@ -367,6 +367,90 @@
               <font name="Segoe UI" size="16" style="0"/>
               <foreground color="-65798"/>
               <text value="Cows: 0"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="8a800" binding="historyPanel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12505283"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="2d611" class="javax.swing.JTable" binding="historyTable">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <autoCreateRowSorter value="false"/>
+              <background color="-12505283"/>
+              <enabled value="true"/>
+              <fillsViewportHeight value="true"/>
+              <font name="Segoe UI" size="10" style="0"/>
+              <foreground color="-65798"/>
+              <gridColor color="-65798"/>
+              <inheritsPopupMenu value="false"/>
+              <name value=""/>
+              <opaque value="true"/>
+              <toolTipText value=""/>
+            </properties>
+          </component>
+          <component id="90ed" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Segoe UI" size="10" style="1"/>
+              <foreground color="-65798"/>
+              <text value="Guess"/>
+            </properties>
+          </component>
+          <component id="e077d" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Segoe UI" size="10" style="1"/>
+              <foreground color="-65798"/>
+              <text value="Bulls"/>
+            </properties>
+          </component>
+          <component id="2dbc2" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Segoe UI" size="10" style="1"/>
+              <foreground color="-65798"/>
+              <text value="Cows"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="b66c4" binding="historyTitlePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12505283"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="445d7" class="javax.swing.JLabel" binding="historyTitleLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Segoe UI" size="16" style="1"/>
+              <foreground color="-65798"/>
+              <text value="History"/>
             </properties>
           </component>
         </children>
